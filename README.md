@@ -6,7 +6,7 @@ I am Cj -  This is just a small project sample I created, just to practice my la
 This is an API for a flight system that allows to book reservations. The idea is simple, and the code straight forward. 
 
 With 21 endpoints, you can change and consume the data however you want. That is the point of this project, as the same concept can be used in other projects to have a robust and rocking API system for consumption.
-Just to reiterate, how the system works is not the point of this project (eg, it doesn't have all the features it could have) - the point is to display my ability to quickly create restful web services in little time, and my ability to quickly adapt to completly new frameworks or projects in genera, I believe that is one of my strong suits. 
+Just to reiterate, how the system works is not the point of this project (eg, it doesn't have all the features it could have)
 
 
 The idea is - we have various RESTFUL Endpoints that handle the creation, updating, storing, partially storing and deletion of data.
