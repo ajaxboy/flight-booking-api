@@ -49,3 +49,20 @@ Route::fallback( function() {
     return response()->json(['error' => 'Invalid Resource Request.'], 404);
 })->name('api.404');
 
+
+
+Route::options('{all}', function () {
+    $response = Response::make('');
+
+    if(!empty($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], ['http://localhost:8090'])) {
+        $response->header('Access-Control-Allow-Origin', $_SERVER['HTTP_ORIGIN']);
+    } else {
+        $response->header('Access-Control-Allow-Origin', url()->current());
+    }
+    $response->header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization');
+    $response->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, PATCH, DELETE');
+    $response->header('Access-Control-Allow-Credentials', 'true');
+    $response->header('X-Content-Type-Options', 'nosniff');
+
+    return $response;
+})->where('all', '.*');

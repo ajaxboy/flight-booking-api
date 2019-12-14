@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ReservationSeed extends Seeder
+class UserSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ReservationSeed extends Seeder
      */
     public function run()
     {
-        factory(App\Model\Reservation::class, 50);
+        factory(App\User::class, 50)->create();
     }
 }
