@@ -54,7 +54,7 @@ Route::fallback( function() {
 Route::options('{all}', function () {
     $response = Response::make('');
 
-    if(!empty($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], ['http://localhost:8090'])) {
+    if(!empty($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], ['http://127.0.0.1:8000'])) {
         $response->header('Access-Control-Allow-Origin', $_SERVER['HTTP_ORIGIN']);
     } else {
         $response->header('Access-Control-Allow-Origin', url()->current());
