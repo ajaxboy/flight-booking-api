@@ -5,8 +5,8 @@ I am Cj -  This is just a small project sample I created, just to practice my la
 
 This is an API for a flight system that allows to book reservations. The idea is simple, and the code straight forward. 
 
-With 21 endpoints, you can change and consume the data however you want. That is the point of this project, as the same concept can be used in other projects to have a robust and rocking API system for consumption.
-Just to reiterate, how the system works is not the point of this project (eg, it doesn't have all the features it could have)
+With 21 endpoints, you can change and consume the data however you want. That is the point of this project, as the same concept can be used in other projects for simple clean API consumption.
+Just to reiterate this project doesn't have all the features it could have.
 
 
 The idea is - we have various RESTFUL Endpoints that handle the creation, updating, storing, partially storing and deletion of data.
