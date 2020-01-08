@@ -1,7 +1,7 @@
 
 Hello!,
 
-I am Cj -  This is just a small project sample I created, just to practice my laravel skills - and having lots of fun while doing it!.  
+I am Cj -  This is just a small project sample I created,  to display my laravel skills - and having lots of fun while doing it!.  
 
 This is an API for a flight system that allows to book reservations. The idea is simple, and the code straight forward. 
 
