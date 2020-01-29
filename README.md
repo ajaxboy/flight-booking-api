@@ -33,7 +33,7 @@ I used migrations to create the initial db structure, factories are to generate 
 
 eg:  `factory(App\User::class)->create()` will result in New User, New Booking, New Reservation and a new Flight (Event/Listener `app/Events/UserCreated.php` triggers the additional factory creations) The trigger of the event happens in User Factory (`database/factories/UserFactory` `->afterCreating()` event.
 
-^--- This block above in short explains all of the framework features I used. It took me 2 - 3 weeks to learn the framework (by that I mean diggesting the documentation) but only took me about 4 days to complete this project and put in practice some of the things I had learned; I levaraged my vast experience in other systems and frameworks to quickly adapt.
+^--- This block above in short explains all of the framework features I used. It took me 2 - 3 weeks to learn the framework (by that I mean diggesting the documentation) but only took me about 4 days to complete this project (including Tests) and put in practice some of the things I had learned; I levaraged my vast experience in other systems and frameworks to quickly adapt.
 
 
 Here is how we get this to run (if you want to test it?) 
