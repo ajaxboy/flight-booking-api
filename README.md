@@ -43,8 +43,6 @@ You will need a new database, and to run a few commands in the terminal.
 - Create a database and update file .env with this new database informaiton.
 - copy `.env.example` into `.env` and update DATABASE CONSTANTS with the database you created.
 
-(ps: I did test/followed this documentation from scratch, I know it works!)
-
 Commands:
 
     $ git clone https://github.com/ajaxboy/flight-booking-api.git  api
