@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use App\Model\Booking;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -23,11 +24,13 @@ class BookingAPITest extends TestCase
         $this->assertArrayHasKey('name', $response->decodeResponseJson('data'));
     }
 
+    /** @test */
     public function can_update_booking()
     {
-        $booking = factory(Booking::class)->make()->toArray();
+        $user = factory(User::class)->create();
+        $booking = $user->Booking()->first()->toArray();
 
-        $response = $this->put('/api/booking/' . $booking->id, array_merge($booking, [
+        $response = $this->put('/api/booking/' . $booking['id'], array_merge($booking, [
             'name' => 'Cj Galindo'
         ]));
 
