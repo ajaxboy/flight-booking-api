@@ -49,6 +49,8 @@ This will also run the app on port 8000, hence you should be able to run it by g
 When you go to http://127.0.0.1:8000, the front facing page will show you the 'GET' methods only, additional methods will only
 be able to be tested by making request with an API program such as [Postman](https://www.getpostman.com/) or through API consumption.
 
+#### Unit Testing
+
 For `tests` the same database settings will be used as per your `.env` file;  you can change that by
 creating a brand new database and updating file `phpunit.xml`
 
