@@ -45,10 +45,11 @@ Commands:
 
  For `tests` the same database settings will be used as per your `.env` file;  you can change that by
 creating a brand new database and updating file `phpunit.xml`
-    `
-     <env name="DB_DATABASE" value="laravel" />
-    `
-Run tests:
+
+ phpunit.xml
+    `<env name="DB_DATABASE" value="laravel" />`
+
+ Run tests:
     `$ vendor/bin/phpunit`
 
 
