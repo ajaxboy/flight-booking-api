@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Model\Reservation;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,8 +16,7 @@ class FlightAPITest extends TestCase
     /** @test */
     public function can_view_flights()
     {
-        factory(Flight::class)->create();
-
+        $user = factory(User::class, 10)->create();
         $response = $this->get('api/flights');
 
         $response->assertOk();
@@ -28,9 +28,10 @@ class FlightAPITest extends TestCase
     /** @test */
     public function can_store_flight()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
         $flight = Flight::find($reservation->flight_id);
-
+     
         $response = $this->json('POST', 'api/flights', $flight->toArray());
 
         $response->assertStatus(201);
@@ -42,7 +43,8 @@ class FlightAPITest extends TestCase
     /** @test */
     public function can_update_flight()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
         $flight = Flight::find($reservation->flight_id);
 
         $flight->flight_number = 999;
@@ -58,7 +60,8 @@ class FlightAPITest extends TestCase
     /** @test */
     public function can_patch_flight()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
         $flight = Flight::find($reservation->flight_id);
 
         $response = $this->patchJson('api/flights/' . $flight->id, [
@@ -75,7 +78,8 @@ class FlightAPITest extends TestCase
     /** @test */
     public function can_delete_fight()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
         $flight = Flight::find($reservation->flight_id);
 
         $response = $this->deleteJson('api/flights/' . $flight->id);

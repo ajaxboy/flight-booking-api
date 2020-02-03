@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Model\Reservation;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,7 +16,7 @@ class ReservationAPITest extends TestCase
     /** @test */
     public function can_list_reservations()
     {
-        factory(Reservation::class)->create();
+        factory(User::class, 10)->create();
 
         $response = $this->get('api/reservations');
 
@@ -28,7 +29,8 @@ class ReservationAPITest extends TestCase
     /** @test */
     public function can_view_reservation()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
 
         $response = $this->get('api/reservations/' . $reservation->id);
 
@@ -41,9 +43,11 @@ class ReservationAPITest extends TestCase
     /** @test */
     public function can_store_reservation()
     {
-        $reservation = factory(Reservation::class)->make();
-
-        $response = $this->postJson('api/reservations', $reservation->toArray());
+        $user = factory(User::class)->create();
+        $reservation_data = $user->Reservation()->first()->toArray();
+        $user->Reservation()->first()->delete();
+  
+        $response = $this->postJson('api/reservations', $reservation_data);
 
         $response->assertStatus(201);
         $this->assertIsArray($response->decodeResponseJson());
@@ -52,15 +56,18 @@ class ReservationAPITest extends TestCase
 
     }
 
-    /** @test */
+    /** 
+     * replace a reservation for another
+     * @test */
     public function can_update_reservation()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
 
-        $new_reservation = factory(Reservation::class)->create([
-            'status' => 'cancelled'
-        ]);
-
+        $user = factory(User::class)->create();
+        $new_reservation = Reservation::Where('user_id', $user->id)->first();
+        $new_reservation->status = 'cancelled';
+        
         $response = $this->putJson('api/reservations/' . $reservation->id, $reservation->toArray());
 
         $response->assertOk();
@@ -73,7 +80,8 @@ class ReservationAPITest extends TestCase
     /** @test */
     public function can_patch_reservation()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
 
         $response = $this->putJson('api/reservations/' . $reservation->id, [
             'passenger_name' => 'Cj Galindo'
@@ -88,7 +96,8 @@ class ReservationAPITest extends TestCase
     /** @test */
     public function can_delete_reservation()
     {
-        $reservation = factory(Reservation::class)->create();
+        $user = factory(User::class)->create();
+        $reservation = Reservation::Where('user_id', $user->id)->first();
 
         $response = $this->deleteJson('api/reservations/' . $reservation->id);
         $response->assertOk();
