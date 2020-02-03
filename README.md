@@ -42,8 +42,14 @@ Commands:
     $ php artisan key:generate
     $ php artisan serve
 
+This will populate the database with random testing data. When you are done you should have 50 flights, 50 bookings, 50 reservations and 50 users in the database.
 
- For `tests` the same database settings will be used as per your `.env` file;  you can change that by
+This will also run the app on port 8000, hence you should be able to run it by going to:  http://127.0.0.1:8000 (or whatever domain you use to host the project)
+
+When you go to http://127.0.0.1:8000, the front facing page will show you the 'GET' methods only, additional methods will only
+be able to be tested by making request with an API program such as [Postman](https://www.getpostman.com/) or through API consumption.
+
+For `tests` the same database settings will be used as per your `.env` file;  you can change that by
 creating a brand new database and updating file `phpunit.xml`
 
  phpunit.xml
@@ -52,13 +58,11 @@ creating a brand new database and updating file `phpunit.xml`
  Run tests:
     `$ vendor/bin/phpunit`
 
+If you do run the tests in the same database; the database will be whipped once the tests are completed.
+To restore data run this:
 
-This will populate the database with random testing data. When you are done you should have 50 flights, 50 bookings, 50 reservations and 50 users in the database.
+    $ php artisan db:seed
 
-This will also run the app on port 8000, hence you should be able to run it by going to:  http://127.0.0.1:8000 (or whatever domain you use to host the project)
-
-When you go to http://127.0.0.1:8000, the front facing page will show you the 'GET' methods only, additional methods will only
-be able to be tested by making request with an API program such as [Postman](https://www.getpostman.com/) or through API consumption.
 
 Here is a list of ENDPOINTS (if you uploaded to a domain, just replace 127.0.0.1 for that domain)
 
