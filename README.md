@@ -1,3 +1,7 @@
+
+![alt tag](https://raw.githubusercontent.com/ajaxboy/flight-booking-api/master/postman.png)
+
+
 I am Cj -  This is a simply, yet ellegant and functional Restful API project I created, using laravel framework.
 
 This is an API for a flight system that allows to book reservations. The idea is simple, and the code straight forward. 
