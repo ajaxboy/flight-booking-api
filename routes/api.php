@@ -10,6 +10,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  *  API Routing
  */
 
+
+Route::post('register','AuthController@register');
+Route::post('login','AuthController@login');
+
 Route::apiResource('users','UserController')
     ->only(['index'])
     ->names([
