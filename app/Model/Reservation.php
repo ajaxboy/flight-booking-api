@@ -22,4 +22,9 @@ class Reservation extends Model
       'tax',
       'assigned_flight_id'
     ];
+
+
+    public function User() {
+      return $this->belongsTo('App\User');
+    }
 }

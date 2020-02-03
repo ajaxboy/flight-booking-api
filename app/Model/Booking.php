@@ -34,4 +34,8 @@ class Booking extends Model
     {
         return  ['American','Southwest','Spirit','Alaska','Jet Blue','Frontier','Delta','United'];
     }
+
+    public function User() {
+        return $this->belongsTo('App\User');
+    }
 }

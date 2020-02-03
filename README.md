@@ -1,13 +1,9 @@
-
-Hello!,
-
-I am Cj -  This is just a small project sample I created, using laravel framework. 
+I am Cj -  This is a simply, yet ellegant and functional Restful API project I created, using laravel framework.
 
 This is an API for a flight system that allows to book reservations. The idea is simple, and the code straight forward. 
 
 With 21 endpoints, you can change and consume the data however you want. That is the point of this project, as the same concept can be used in other projects for simple clean API consumption.
-Just to reiterate this project doesn't have all the features it could have.
-
+Just to reiterate I don't intend to build a whole product here. It's just an implementation.
 
 The idea is - we have various RESTFUL Endpoints that handle the creation, updating, storing, partially storing and deletion of data.
 These various types of data are regarding Bookings, Flights, and Reservations - but like said, the same idea can be applied.
@@ -18,7 +14,7 @@ Here is a list of things I used to develop this API:
 - Migrations <small><i>`database/migrations/*`</i></small>
 - Database Seeding / Factories <small><i>`database/factories/*`</i></small></li>
 - Tinker
-- Response Resources/Collections <small><i>`app/Http/Resources/*`</i></small>
+- Resources/Collections <small><i>`app/Http/Resources/*`</i></small>
 - Controllers <small><i>`app/Http/Controllers/*`</i></small>
 - Request Validation <small><i>`app/Http/Requests/*`</i></small>
 - Dependency Injection
@@ -27,21 +23,14 @@ Here is a list of things I used to develop this API:
 - Eloquent ORM / Models <small><i>`app/Model/*`</i></small>
 - Events/Listeners
 
+`factory(App\User::class)->create()` will result in New User, New Booking, New Reservation and a new Flight (Event/Listener `app/Events/UserCreated.php` triggers the additional factory creations) The trigger of the event happens in User Factory (`database/factories/UserFactory` `->afterCreating()` event.
 
-### In brief - what I did:
-I used migrations to create the initial db structure, factories are to generate test data; while seeding allows to propate generated test data.  Tinker Is used to quickly execute testing and migration commands, then have the code up and running in just a couple of minutes.  I used resources/collection to respond JSON requests in adequete format. Validation is used to validate data being posted in Idempotent mode (yes that is a word). Dependency injection is used thoroughtout to quickly access correspondent models and classes. I used api-resource routings to automate the routing process and connect resources adecuately. I added feature test coverage on all of the endpoints, resulting in 100% coverage. Used eloquent models to take advantage of such a great ORM and added event and listeners to factory out data when you create a new user - it will book and create a reservation for this user.  
-
-eg:  `factory(App\User::class)->create()` will result in New User, New Booking, New Reservation and a new Flight (Event/Listener `app/Events/UserCreated.php` triggers the additional factory creations) The trigger of the event happens in User Factory (`database/factories/UserFactory` `->afterCreating()` event.
-
-^--- This block above in short explains all of the framework features I used. It took me 2 - 3 weeks to learn the framework (by that I mean diggesting the documentation) but only took me about 4 days to complete this project (including Tests) and put in practice some of the things I had learned; I levaraged my vast experience in other systems and frameworks to quickly adapt.
-
-
-Here is how we get this to run (if you want to test it?) 
+#### Get it running
 
 You will need a new database, and to run a few commands in the terminal.
 
 - Create a database and update file .env with this new database informaiton.
-- copy `.env.example` into `.env` and update DATABASE CONSTANTS with the database you created.
+- copy `.env.example` into `.env` and update DATABASE CONSTANTS with the database info you created.
 
 Commands:
 
@@ -52,6 +41,16 @@ Commands:
     $ php artisan db:seed
     $ php artisan key:generate
     $ php artisan serve
+
+
+ For `tests` the same database settings will be used as per your `.env` file;  you can change that by
+creating a brand new database and updating file `phpunit.xml`
+    `
+     <env name="DB_DATABASE" value="laravel" />
+    `
+Run tests:
+    `$ vendor/bin/phpunit`
+
 
 This will populate the database with random testing data. When you are done you should have 50 flights, 50 bookings, 50 reservations and 50 users in the database.
 

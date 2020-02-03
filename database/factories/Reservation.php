@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Reservation::class, function (Faker $faker) use ($factory)  {
 
     return [
+        // All this info is assigned on the-fly through the user model
         /*'user_id' => $user->id,
         'booking_id' => $booking->id,
         'flight_id' => factory(App\Model\Flight::class),
